@@ -3,6 +3,7 @@
   O projeto demonstra proficiência em consumo de APIs, gerenciamento de estado reativo e boas práticas de desenvolvimento moderno para Android.
 
 ## 🛠️ Tecnologias e Bibliotecas
+```
   Categoria     :  Kotlin, MVVM",Estrutura limpa e escalável.
   Interface     :  Compose, Material Design 3.
   Assincronia   :  Kotlin Coroutines, Flow, StateFlow
@@ -10,6 +11,7 @@
   Navegação     :  Navigation Compose
   Persistência  :  Jetpack DataStore
   Models        : Domain Models (Account, Payment), Data Transfer Objects (AccountDto, PaymentDto)
+```
 
 ## 📁 Estrutura de Arquivos e Pacotes (Arquitetura MVVM)
   A estrutura do projeto segue o princípio de separação de responsabilidades (SRP), organizando o código em camadas bem definidas:
