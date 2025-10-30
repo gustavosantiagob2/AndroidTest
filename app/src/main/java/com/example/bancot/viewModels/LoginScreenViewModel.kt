@@ -25,12 +25,11 @@ class LoginScreenViewModel(
     val uiState get() = _uiState.asStateFlow()
 
     private val _loginEvents = MutableSharedFlow<LoginScreenEvent>(
-        replay = 0, // Não repete eventos antigos
-        extraBufferCapacity = 1, // Guarda 1 evento se não houver coletor
-        onBufferOverflow = BufferOverflow.DROP_OLDEST // Política de descarte
+        replay = 0,
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
     val loginEvents: SharedFlow<LoginScreenEvent> = _loginEvents.asSharedFlow()
-
 
     private fun validEmail(email: String): Boolean {
         if (email.contains("@") && email.isNotBlank()) {
@@ -76,10 +75,7 @@ class LoginScreenViewModel(
                 // 3. SE FALHAR, EMITE O EVENTO DE SNACKBAR
                 val errorMessage = "Falha ao realizar login. Verifique suas credenciais."
 
-                // Envia o evento de Snackbar
-                _loginEvents.emit(LoginScreenEvent.ShowSnackbar(errorMessage))
-
-                println("deu erro na API: ${e}")
+                println("Error na API: ${e}")
                 _uiState.update {
                     it.copy(
                         apiErrorMessage = errorMessage,
@@ -89,9 +85,6 @@ class LoginScreenViewModel(
             }finally {
                 _uiState.update { it.copy(isLoading = false) }
             }
-
         }
-
     }
-
 }

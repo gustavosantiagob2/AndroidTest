@@ -1,6 +1,5 @@
 package com.example.bancot.views.components
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
@@ -53,8 +52,6 @@ fun OutlinedTextFieldDefault(
         },
         label = {
             Text(
-                modifier = Modifier
-                    .padding(horizontal = (-15).dp),
                 text = textLabel,
                 color = colorTextWithoutFocus ?: Color.Black
             )

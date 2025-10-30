@@ -2,9 +2,11 @@ package com.example.bancot.views.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -24,11 +26,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import com.example.bancot.util.toBrazilianCurrency
 import com.example.bancot.viewModels.PaymentScreenViewModel
-import com.example.bancot.views.components.ContasPagasLazyColumn
-import com.example.bancot.views.components.ContasPagasSkeletonLazyColumn
+import com.example.bancot.views.components.AccountsPayLazyColumn
+import com.example.bancot.views.components.AccountsPaySkeletonLazyColumn
 import com.example.bancot.views.ui.theme.colorDefaultTex
 import java.math.BigDecimal
-
 
 @Composable
 fun PaymentsScreen(
@@ -41,15 +42,15 @@ fun PaymentsScreen(
 
     ConstraintLayout(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxHeight()
             .padding(horizontal = 16.dp)
     ) {
-        val (text, logo, email, password, login, contasPagas, primeira) = createRefs()
+        val (header, details, client, password, infoAccount, AccountsPay, Accounts) = createRefs()
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
-                .constrainAs(text) {
+                .constrainAs(header) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
@@ -76,9 +77,7 @@ fun PaymentsScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(logo) {
-                    top.linkTo(text.bottom, margin = 38.dp)
-                },
+                .constrainAs(details) { top.linkTo(header.bottom, margin = 20.dp) }
         ) {
             Text(
                 text = "Detalhes do pagamento",
@@ -90,9 +89,7 @@ fun PaymentsScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(email) {
-                    top.linkTo(logo.bottom, margin = 32.dp)
-                },
+                .constrainAs(client) { top.linkTo(details.bottom, margin = 14.dp) }
         ) {
             Text(
                 text = "Cliente: ${account?.customerName}",
@@ -104,9 +101,7 @@ fun PaymentsScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(password) {
-                    top.linkTo(email.bottom, margin = 16.dp)
-                },
+                .constrainAs(password) { top.linkTo(client.bottom, margin = 1.dp) }
         ) {
             Text(
                 text = "Agência: ${account?.branchNumber} | Conta: ${account?.accountNumber}",
@@ -117,9 +112,7 @@ fun PaymentsScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(login) {
-                    top.linkTo(password.bottom, margin = 16.dp)
-                },
+                .constrainAs(infoAccount) { top.linkTo(password.bottom, margin = 13.dp) }
         ) {
             Text(
                 text = "Saldo: ${BigDecimal(saldo.toDouble()).toBrazilianCurrency()}",
@@ -131,9 +124,7 @@ fun PaymentsScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(contasPagas) {
-                    top.linkTo(login.bottom, margin = 16.dp)
-                },
+                .constrainAs(AccountsPay) { top.linkTo(infoAccount.bottom, margin = 16.dp) }
         ) {
             Text(
                 text = "Contas pagas",
@@ -142,17 +133,18 @@ fun PaymentsScreen(
             )
         }
 
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .constrainAs(primeira) {
-                    top.linkTo(contasPagas.bottom, margin = 16.dp)
-                },
+                .heightIn(max = 500.dp)
+                .constrainAs(Accounts) {
+                    top.linkTo(AccountsPay.bottom, margin = 12.dp)
+                }
         ) {
             if (paymentsState.isLoading) {
-                ContasPagasSkeletonLazyColumn(count = 5)
+                AccountsPaySkeletonLazyColumn(count = 7)
             } else {
-                ContasPagasLazyColumn(contas = paymentsState.payments)
+                AccountsPayLazyColumn(accounts = paymentsState.payments,)
             }
         }
     }

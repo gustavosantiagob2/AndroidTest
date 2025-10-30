@@ -20,13 +20,15 @@ val ShimmerColorShades = listOf(
     Color.LightGray.copy(0.2f),
     Color.LightGray.copy(0.9f),
 )
+
 @Composable
-fun LoadingSkelton(modifier: Modifier = Modifier) { // ⚠️ O retorno deve ser Unit, não Modifier
+fun LoadingSkeleton(modifier: Modifier = Modifier) {
+
     val transition = rememberInfiniteTransition(label = "ShimmerTransition")
 
     val transitionAnimation by transition.animateFloat(
         initialValue = 0f,
-        targetValue = 1000f, // ⭐️ CORREÇÃO 1: Aumente o targetValue para cobrir a largura da tela (1000f é seguro)
+        targetValue = 1000f,
         animationSpec = infiniteRepeatable(
             animation = tween(
                 durationMillis = 1000,
@@ -37,17 +39,15 @@ fun LoadingSkelton(modifier: Modifier = Modifier) { // ⚠️ O retorno deve ser
         label = "ShimmerTranslate"
     )
 
-    // 3. Define o pincel (Brush) para o gradiente
     val brush = Brush.linearGradient(
         colors = ShimmerColorShades,
-        start = Offset(x = transitionAnimation - 1000f, y = 0f), // ⭐️ CORREÇÃO 2: Ajuste o início com base no novo target
+        start = Offset(x = transitionAnimation - 1000f, y = 0f),
         end = Offset(x = transitionAnimation, y = transitionAnimation),
     )
 
-    // 4. Aplica o background dentro de um Box para renderizar visualmente.
     Box(
         modifier = Modifier
             .background(brush = brush)
-            .then(modifier) // Aplica as dimensões (width, height) passadas de PaymentSkeletonItem
+            .then(modifier)
     )
 }

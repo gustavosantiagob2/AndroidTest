@@ -6,23 +6,22 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -46,35 +45,26 @@ import com.example.bancot.views.ui.theme.colorDefaultTextField
 @Composable
 fun HomeScreen(
     viewModel: LoginScreenViewModel,
-    navController : NavHostController
+    navController: NavHostController,
 ) {
     val state by viewModel.uiState.collectAsState()
-
-    val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.loginEvents.collect { event ->
             when (event) {
                 LoginScreenEvent.NavigateToPayments -> {
-                    navController.navigate(RoutNavigation.paymentsScreen.rout) {
-                        popUpTo(RoutNavigation.homeScreen.rout) {
+                    navController.navigate(RoutNavigation.PaymentsScreen.rout) {
+                        popUpTo(RoutNavigation.HomeScreen.rout) {
                             //     inclusive = true
                         }
                     }
-                }
-                is LoginScreenEvent.ShowSnackbar -> {
-                    snackbarHostState.showSnackbar(
-                        message = event.message,
-                        withDismissAction = true
-                    )
                 }
             }
         }
     }
 
-    Scaffold(
-        snackbarHost = { SnackbarHost(snackbarHostState) }
-    ) { paddingValues ->
+    Scaffold()
+    { paddingValues ->
         HomeScreen(
             state = state,
             onEmailChange = viewModel::onEmailChange,
@@ -91,7 +81,7 @@ fun HomeScreen(
     onEmailChange: (String) -> Unit = {},
     onPasswordChange: (String) -> Unit = {},
     onLoginClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     ConstraintLayout(
         modifier = modifier
@@ -104,7 +94,7 @@ fun HomeScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 32.dp)
+                .padding(top = 28.dp)
                 .constrainAs(text) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
@@ -124,24 +114,24 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .constrainAs(logo) {
-                    top.linkTo(text.bottom, margin = 16.dp)
+                    top.linkTo(text.bottom, margin = 25.dp)
                 },
         ) {
             Image(
                 modifier = Modifier
-                    .height(239.dp)
-//                    .width(358.dp)
-                    .fillMaxWidth(),
+                    .heightIn(max = 358.dp)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp)),
                 painter = painterResource(R.drawable.aoe_logo),
                 contentDescription = "Imagem do logo do banco",
-                contentScale = ContentScale.FillHeight
+                contentScale = ContentScale.FillWidth
             )
         }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .constrainAs(emailField) {
-                    top.linkTo(logo.bottom, margin = 12.dp)
+                    top.linkTo(logo.bottom, margin = 16.dp)
                 },
         ) {
 
@@ -171,7 +161,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .constrainAs(passwordField) {
-                    top.linkTo(emailField.bottom, margin = 12.dp)
+                    top.linkTo(emailField.bottom, margin = 16.dp)
                 },
         ) {
             OutlinedTextFieldDefault(
@@ -190,7 +180,7 @@ fun HomeScreen(
                 supportingText = {
                     if (state.errorPassword) {
                         ErrorText(
-                            textError = "A senha deve conter pelo menos 6 caracteres 1 sendo maiúsculo 1 e 1 sendo número para ser válido."
+                            textError = "A senha deve conter pelo menos 6 caracteres 1 sendo maiúsculo e 1 sendo número para ser válido."
                         )
                     } else {
                         null
@@ -208,13 +198,15 @@ fun HomeScreen(
             Button(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .width(480.dp),
+                    .height(48.dp),
                 onClick = onLoginClick,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorDefaultButton,
                     contentColor = Color.White
                 ),
-                enabled = state.butonEnabled
+                enabled = state.butonEnabled,
+                shape = RoundedCornerShape(12.dp)
+
             ) {
                 Text(text = "Login")
             }
@@ -231,6 +223,7 @@ fun HomeScreen(
         }
     }
 }
+
 @Preview(showSystemUi = true)
 @Composable
 private fun HomeScreenPreview() {

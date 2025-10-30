@@ -22,7 +22,7 @@ class PaymentScreenViewModel(
 
     val uiState get() = _uiState.asStateFlow()
 
-    // ⭐️ Expor o objeto Account (coletado do DataStore/Repository)
+    // Objeto Account (coletado do DataStore/Repository)
     val accountState: StateFlow<Account?> = repository.accountFlow
         .stateIn(
             scope = viewModelScope,
@@ -38,8 +38,7 @@ class PaymentScreenViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, apiErrorMessage = null) }
             try {
-                kotlinx.coroutines.delay(5000) // Atraso de 2 segundos para fins de teste
-
+                kotlinx.coroutines.delay(2000) // para aparecer o skeleton
 
                 val paymentList = repository.getPayments()
 

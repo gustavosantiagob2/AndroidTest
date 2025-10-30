@@ -23,8 +23,9 @@ object RetrofitClient {
             .baseUrl(BASE_URL)
             .addConverterFactory(
                 GsonConverterFactory.create(
-                GsonBuilder().setLenient().create()
-            ))
+                    GsonBuilder().setLenient().create()
+                )
+            )
             .client(httpClient)
             .build()
     }

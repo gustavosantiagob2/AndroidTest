@@ -2,10 +2,9 @@ package com.example.bancot.data.repository
 
 import com.example.bancot.data.dataStore.AccountPreferences
 import com.example.bancot.data.remote.AccountApiService
-import com.example.bancot.data.remote.model.AccountDto
-import com.example.bancot.data.remote.model.PaymentDto
 import com.example.bancot.models.classes.Account
 import com.example.bancot.models.classes.Payment
+import com.example.bancot.util.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 
@@ -35,6 +34,7 @@ class AccountRepository(
         }
     }
 
+    //Estou salvando no DataStore por isso não estou usando
     suspend fun infoAccount(): Account {
         val accountDtoList = apiService.getInfoAccount()
         val accountDto = accountDtoList.first()
@@ -50,20 +50,3 @@ class AccountRepository(
 
 }
 
-private fun AccountDto.toDomain(): Account {
-    return Account(
-        customerName = this.customerName,
-        accountNumber = this.accountNumber,
-        branchNumber = this.branchNumber,
-        checkingAccountBalance = this.checkingAccountBalance,
-        id = this.id
-    )
-}
-
-private fun PaymentDto.toDomain(): Payment {
-    return Payment(
-        paymentDate = this.paymentDate,
-        electricityBill = this.electricityBill,
-        id = this.id
-    )
-}

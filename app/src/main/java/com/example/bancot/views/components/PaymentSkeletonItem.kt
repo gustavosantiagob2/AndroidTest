@@ -19,25 +19,19 @@ fun PaymentSkeletonItem() {
             .fillMaxWidth()
             .padding(vertical = 8.dp)
     ) {
-        // Linha 1: Título do pagamento (simulada por um retângulo)
-        LoadingSkelton(
+        LoadingSkeleton(
             modifier = Modifier
                 .fillMaxWidth()
-//                .width(200.dp)
                 .height(20.dp)
                 .clip(RoundedCornerShape(4.dp))
         )
-
         Spacer(modifier = Modifier.height(8.dp))
-
-        // Linha 2: Valor e data (simulada por um retângulo menor)
-        LoadingSkelton(
+        LoadingSkeleton(
             modifier = Modifier
                 .width(150.dp)
                 .height(16.dp)
                 .clip(RoundedCornerShape(4.dp))
         )
-
         Spacer(modifier = Modifier.height(16.dp))
     }
 }

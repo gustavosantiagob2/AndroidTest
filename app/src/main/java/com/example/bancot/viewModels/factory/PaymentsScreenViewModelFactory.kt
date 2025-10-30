@@ -1,8 +1,9 @@
-package com.example.bancot.viewModels
+package com.example.bancot.viewModels.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bancot.data.repository.AccountRepository
+import com.example.bancot.viewModels.PaymentScreenViewModel
 
 class PaymentsScreenViewModelFactory(
     private val repository: AccountRepository

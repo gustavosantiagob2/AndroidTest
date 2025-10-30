@@ -3,9 +3,7 @@ package com.example.bancot.views.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,13 +16,14 @@ import com.example.bancot.models.classes.Payment
 import com.example.bancot.views.ui.theme.colorDefaultTex
 
 @Composable
-fun ContasPagas(conta: Payment) {
+fun AccountsPay(conta: Payment) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .padding(top =  13.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column {
@@ -40,7 +39,6 @@ fun ContasPagas(conta: Payment) {
                     modifier = Modifier.padding(top = 4.dp)
                 )
             }
-
             Text(
                 text = conta.paymentDate,
                 color = colorDefaultTex,
@@ -48,7 +46,6 @@ fun ContasPagas(conta: Payment) {
             )
         }
     }
-    Spacer(modifier = Modifier .height(32.dp))
 }
 
 @Preview(showSystemUi = true)

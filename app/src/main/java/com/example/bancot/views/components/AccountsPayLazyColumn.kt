@@ -7,10 +7,10 @@ import com.example.bancot.models.classes.Payment
 
 
 @Composable
-fun ContasPagasLazyColumn(contas: List<Payment>) {
+fun AccountsPayLazyColumn(accounts: List<Payment>) {
     LazyColumn {
-        items(contas) { conta ->
-            ContasPagas(conta = conta)
+        items(accounts) { accounts ->
+            AccountsPay(conta = accounts)
         }
     }
 }

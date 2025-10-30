@@ -10,9 +10,9 @@ import androidx.navigation.compose.composable
 import com.example.bancot.MyApplication
 import com.example.bancot.models.routNav.RoutNavigation
 import com.example.bancot.viewModels.LoginScreenViewModel
-import com.example.bancot.viewModels.LoginScreenViewModelFactory
 import com.example.bancot.viewModels.PaymentScreenViewModel
-import com.example.bancot.viewModels.PaymentsScreenViewModelFactory
+import com.example.bancot.viewModels.factory.LoginScreenViewModelFactory
+import com.example.bancot.viewModels.factory.PaymentsScreenViewModelFactory
 import com.example.bancot.views.screens.HomeScreen
 import com.example.bancot.views.screens.PaymentsScreen
 
@@ -30,16 +30,15 @@ fun AppNavGraph(navController: NavHostController) {
     val loginViewModelFactory   = remember { LoginScreenViewModelFactory(repository = accountRepository) }
     val paymentViewModelFactory = remember { PaymentsScreenViewModelFactory(repository = accountRepository) }
 
-
     NavHost(
         navController = navController,
-        startDestination = RoutNavigation.homeScreen.rout
+        startDestination = RoutNavigation.HomeScreen.rout
     ) {
-        composable(route = RoutNavigation.homeScreen.rout) {
+        composable(route = RoutNavigation.HomeScreen.rout) {
             val viewModel: LoginScreenViewModel = viewModel(factory = loginViewModelFactory)
             HomeScreen(viewModel = viewModel, navController = navController)
         }
-        composable(route = RoutNavigation.paymentsScreen.rout) {
+        composable(route = RoutNavigation.PaymentsScreen.rout) {
             val viewModel: PaymentScreenViewModel = viewModel(factory = paymentViewModelFactory)
             PaymentsScreen(viewModel = viewModel, navController = navController)
         }

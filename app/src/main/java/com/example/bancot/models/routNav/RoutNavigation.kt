@@ -3,6 +3,6 @@ package com.example.bancot.models.routNav
 sealed class RoutNavigation(
     val rout :  String
 ){
-    object homeScreen : RoutNavigation("home_screen")
-    object paymentsScreen : RoutNavigation("payments_screen")
+    object HomeScreen : RoutNavigation("home_screen")
+    object PaymentsScreen : RoutNavigation("payments_screen")
 }
