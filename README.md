@@ -14,31 +14,31 @@
 📁 Estrutura de Arquivos e Pacotes (Arquitetura MVVM)
   A estrutura do projeto segue o princípio de separação de responsabilidades (SRP), organizando o código em camadas bem definidas:
 
-  com.example.bancot
-  ├── data
-  │   ├── dataStore                   // Gerencia o Jetpack DataStore (AccountPreferences)
-  │   ├── remote                      // Camada de API (AccountApiService, RetrofitClient)
-  │   │   └── model                   // Data Classes de API (DTOs: AccountDto, PaymentDto)
-  │   └── repository                  // Lógica de busca e persistência de dados (AccountRepository)
-  ├── models                          // Domínio do Negócio
-  │   ├── classes                     // Domain Models (Account, Payment)
-  │   └── routNav                     // Definição das Rotas de Navegação (RoutNavigation)
-  ├── util                            // Funções de Extensão e Conversão
-  │   ├── bigDecimalToCoin.kt         // Ex: Conversão para formato de moeda
-  │   └── toDomain.kt                 // Mappers de DTO para Domain Model
-  ├── viewModels                      // Camada de Lógica de UI (ViewModel)
-  │   ├── factory                     // ViewModelFactory (para injeção de dependência manual)
-  │   ├── navigationScreen            // Configuração do NavHost (NavScreen)
-  │   └── uiState                     // State Holders para a UI
-  │       ├── LoginScreenEvent        // Eventos de entrada da View
-  │       ├── LoginScreenUiState      // Estado da Tela de Login
-  │       ├── PaymentScreenUiState    // Estado da Tela de Pagamentos
-  │       ├── LoginScreenViewModel
-  │       └── PaymentScreenViewModel
-  └── views                           // Camada de UI (Jetpack Compose)
-      ├── components                  // Elementos reutilizáveis (Loading, ErrorText, TextFieldDefault, Skeletons)
-      ├── screens                     // Telas Completas (HomeScreen, PaymentsScreen)
-      └── ui                          // Configurações de Tema (Color, Theme, Type)
+com.example.bancot
+├── data
+│   ├── dataStore           // Gerencia o Jetpack DataStore (AccountPreferences)
+│   ├── remote              // Camada de API (AccountApiService, RetrofitClient)
+│   │   └── model           // Data Classes de API (DTOs: AccountDto, PaymentDto)
+│   └── repository          // Lógica de busca e persistência de dados (AccountRepository)
+├── models                  // Domínio do Negócio
+│   ├── classes             // Domain Models (Account, Payment)
+│   └── routNav             // Definição das Rotas de Navegação (RoutNavigation)
+├── util                    // Funções de Extensão e Conversão
+│   ├── bigDecimalToCoin.kt // Ex: Conversão para formato de moeda
+│   └── toDomain.kt         // Mappers de DTO para Domain Model
+├── viewModels              // Camada de Lógica de UI (ViewModel)
+│   ├── factory             // ViewModelFactory (para injeção de dependência manual)
+│   ├── navigationScreen    // Configuração do NavHost (NavScreen)
+│   └── uiState             // State Holders para a UI
+│       ├── LoginScreenEvent      // Eventos de entrada da View
+│       ├── LoginScreenUiState    // Estado da Tela de Login
+│       ├── PaymentScreenUiState  // Estado da Tela de Pagamentos
+│       ├── LoginScreenViewModel
+│       └── PaymentScreenViewModel
+└── views                   // Camada de UI (Jetpack Compose)
+    ├── components          // Elementos reutilizáveis (Loading, ErrorText, TextFieldDefault, Skeletons)
+    ├── screens             // Telas Completas (HomeScreen, PaymentsScreen)
+    └── ui                  // Configurações de Tema (Color, Theme, Type)
 
 1️⃣ Funcionalidades Chave
   1°) 
