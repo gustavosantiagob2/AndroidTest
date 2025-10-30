@@ -2,7 +2,7 @@
   O objetivo principal do projeto foi criar um aplicativo bancário de duas telas (Login e Pagamentos), utilizando Kotlin, Jetpack Compose e o padrão de arquitetura MVVM (Model-View-ViewModel),
   O projeto demonstra proficiência em consumo de APIs, gerenciamento de estado reativo e boas práticas de desenvolvimento moderno para Android.
 
-🛠️ Tecnologias e Bibliotecas
+## 🛠️ Tecnologias e Bibliotecas
   Categoria     :  Kotlin, MVVM",Estrutura limpa e escalável.
   Interface     :  Compose, Material Design 3.
   Assincronia   :  Kotlin Coroutines, Flow, StateFlow
