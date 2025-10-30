@@ -44,28 +44,28 @@ com.example.bancot
 ```
 
 ## 1️⃣ Funcionalidades Chave
-  1°) 
-    Login (Implementado em LoginScreenViewModel e HomeScreen.kt)
-    Validação Reativa: A validade do e-mail (contém "@") e da senha (min 6 caracteres, 1 letra, 1 número) é controlada reativamente no ViewModel.
-    Estado do Botão: O botão de Login é habilitado apenas quando ambos os campos são válidos.
-    Integração com API: Chama o endpoint de Login via AccountRepository.
-    Persistência: Em caso de sucesso, armazena os dados do cliente (Nome, Conta, Agência, Saldo) no DataStore (AccountPreferences) antes de navegar.
+  1°) <br/>
+    Login (Implementado em LoginScreenViewModel e HomeScreen.kt) <br/>
+    Validação Reativa: A validade do e-mail (contém "@") e da senha (min 6 caracteres, 1 letra, 1 número) é controlada reativamente no ViewModel. <br/>
+    Estado do Botão: O botão de Login é habilitado apenas quando ambos os campos são válidos. <br/>
+    Integração com API: Chama o endpoint de Login via AccountRepository. <br/>
+    Persistência: Em caso de sucesso, armazena os dados do cliente (Nome, Conta, Agência, Saldo) no DataStore (AccountPreferences) antes de navegar. <br/>
   
-  2°)
-    Pagamentos (Implementado em PaymentScreenViewModel e PaymentsScreen.kt)
-    Exibição de Dados        :   Carrega e exibe os dados do cliente do DataStore.
-    Lista de Pagamentos      :   Busca a lista de contas pagas da API.
-    Gestão de Estado Visual  :   Exibe um componente de Loading (Loading.kt) durante a chamada de rede.
-    Exibe Skeletons (PaymentSkeletonItem.kt) para melhorar a experiência do usuário durante o carregamento inicial.
-    Exibe Mensagem de Erro clara em caso de falha na API.
+  2°) <br/>
+    Pagamentos (Implementado em PaymentScreenViewModel e PaymentsScreen.kt). <br/>
+    Exibição de Dados        :   Carrega e exibe os dados do cliente do DataStore. <br/>
+    Lista de Pagamentos      :   Busca a lista de contas pagas da API. <br/>
+    Gestão de Estado Visual  :   Exibe um componente de Loading (Loading.kt) durante a chamada de rede. <br/>
+    Exibe Skeletons (PaymentSkeletonItem.kt) para melhorar a experiência do usuário durante o carregamento inicial. <br/>
+    Exibe Mensagem de Erro clara em caso de falha na API. <br/>
 
 ## ✅ Destaques de Boas Práticas
-  Separação de Modelos: Uso claro de DTOs (remote/model) para a API e Domain Models (models/classes) para a camada de negócio, com mappers (toDomain.kt) para conversão.
-  Gerenciamento de Estado Consistente: O uso de ...UiState e ...Event centraliza o estado e os eventos da tela, simplificando a lógica da UI (View).
-  Injeção de Dependência Manual (Factory): Uso de ViewModelFactory para instanciar ViewModels, permitindo a injeção do Repositório.
-  Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn.
+  Separação de Modelos: Uso claro de DTOs (remote/model) para a API e Domain Models (models/classes) para a camada de negócio, com mappers (toDomain.kt) para conversão. <br/>
+  Gerenciamento de Estado Consistente: O uso de ...UiState e ...Event centraliza o estado e os eventos da tela, simplificando a lógica da UI (View). <br/>
+  Injeção de Dependência Manual (Factory): Uso de ViewModelFactory para instanciar ViewModels, permitindo a injeção do Repositório. <br/>
+  Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn. br/>
 
 ## ⚙️ Como Rodar o Projeto
-  Pré-requisitos: Android Studio com suporte a Jetpack Compose.
-  Clonar o Repositório: git clone
-  Executar: Abrir o projeto no Android Studio e rodar na sua máquina virtual ou dispositivo físico.
+  Pré-requisitos: Android Studio com suporte a Jetpack Compose. <br/>
+  Clonar o Repositório: git clone. <br/>
+  Executar: Abrir o projeto no Android Studio e rodar na sua máquina virtual ou dispositivo físico. <br/>
