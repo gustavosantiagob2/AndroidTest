@@ -1,4 +1,4 @@
-🎯 Objetivo do Projeto
+## 🎯 Objetivo do Projeto
   O objetivo principal do projeto foi criar um aplicativo bancário de duas telas (Login e Pagamentos), utilizando Kotlin, Jetpack Compose e o padrão de arquitetura MVVM (Model-View-ViewModel),
   O projeto demonstra proficiência em consumo de APIs, gerenciamento de estado reativo e boas práticas de desenvolvimento moderno para Android.
 
@@ -11,9 +11,9 @@
   Persistência  :  Jetpack DataStore
   Models        : Domain Models (Account, Payment), Data Transfer Objects (AccountDto, PaymentDto)
 
-📁 Estrutura de Arquivos e Pacotes (Arquitetura MVVM)
+## 📁 Estrutura de Arquivos e Pacotes (Arquitetura MVVM)
   A estrutura do projeto segue o princípio de separação de responsabilidades (SRP), organizando o código em camadas bem definidas:
-
+```
 com.example.bancot
 ├── data
 │   ├── dataStore           // Gerencia o Jetpack DataStore (AccountPreferences)
@@ -39,8 +39,9 @@ com.example.bancot
     ├── components          // Elementos reutilizáveis (Loading, ErrorText, TextFieldDefault, Skeletons)
     ├── screens             // Telas Completas (HomeScreen, PaymentsScreen)
     └── ui                  // Configurações de Tema (Color, Theme, Type)
+```
 
-1️⃣ Funcionalidades Chave
+## 1️⃣ Funcionalidades Chave
   1°) 
     Login (Implementado em LoginScreenViewModel e HomeScreen.kt)
     Validação Reativa: A validade do e-mail (contém "@") e da senha (min 6 caracteres, 1 letra, 1 número) é controlada reativamente no ViewModel.
@@ -56,13 +57,13 @@ com.example.bancot
     Exibe Skeletons (PaymentSkeletonItem.kt) para melhorar a experiência do usuário durante o carregamento inicial.
     Exibe Mensagem de Erro clara em caso de falha na API.
 
-✅ Destaques de Boas Práticas
+## ✅ Destaques de Boas Práticas
   Separação de Modelos: Uso claro de DTOs (remote/model) para a API e Domain Models (models/classes) para a camada de negócio, com mappers (toDomain.kt) para conversão.
   Gerenciamento de Estado Consistente: O uso de ...UiState e ...Event centraliza o estado e os eventos da tela, simplificando a lógica da UI (View).
   Injeção de Dependência Manual (Factory): Uso de ViewModelFactory para instanciar ViewModels, permitindo a injeção do Repositório.
   Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn.
 
-⚙️ Como Rodar o Projeto
+##⚙️ Como Rodar o Projeto
   Pré-requisitos: Android Studio com suporte a Jetpack Compose.
   Clonar o Repositório: git clone
   Executar: Abrir o projeto no Android Studio e rodar na sua máquina virtual ou dispositivo físico.
