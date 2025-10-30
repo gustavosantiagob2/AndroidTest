@@ -4,7 +4,7 @@
 
 ## 🛠️ Tecnologias e Bibliotecas
 ```
-  Categoria     :  Kotlin, MVVM",Estrutura limpa e escalável.
+  Categoria     :  Kotlin, MVVM, Estrutura limpa e escalável.
   Interface     :  Compose, Material Design 3.
   Assincronia   :  Kotlin Coroutines, Flow, StateFlow
   Rede          :  Retrofit 2
