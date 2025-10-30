@@ -63,7 +63,7 @@ com.example.bancot
   Injeção de Dependência Manual (Factory): Uso de ViewModelFactory para instanciar ViewModels, permitindo a injeção do Repositório.
   Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn.
 
-##⚙️ Como Rodar o Projeto
+## ⚙️ Como Rodar o Projeto
   Pré-requisitos: Android Studio com suporte a Jetpack Compose.
   Clonar o Repositório: git clone
   Executar: Abrir o projeto no Android Studio e rodar na sua máquina virtual ou dispositivo físico.
