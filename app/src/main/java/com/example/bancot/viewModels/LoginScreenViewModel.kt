@@ -72,7 +72,6 @@ class LoginScreenViewModel(
             try {
                 _loginEvents.emit(LoginScreenEvent.NavigateToPayments)
             }catch (e: Exception){
-                // 3. SE FALHAR, EMITE O EVENTO DE SNACKBAR
                 val errorMessage = "Falha ao realizar login. Verifique suas credenciais."
 
                 println("Error na API: ${e}")
