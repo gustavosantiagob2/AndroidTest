@@ -63,7 +63,7 @@ com.example.bancot
   Separação de Modelos: Uso claro de DTOs (remote/model) para a API e Domain Models (models/classes) para a camada de negócio, com mappers (toDomain.kt) para conversão. <br/>
   Gerenciamento de Estado Consistente: O uso de ...UiState e ...Event centraliza o estado e os eventos da tela, simplificando a lógica da UI (View). <br/>
   Injeção de Dependência Manual (Factory): Uso de ViewModelFactory para instanciar ViewModels, permitindo a injeção do Repositório. <br/>
-  Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn. br/>
+  Componentização: Componentes de UI (views/components) são criados de forma modular e reutilizável, como TextFieldDefault e AccountsPayLazyColumn. <br/>
 
 ## ⚙️ Como Rodar o Projeto
   Pré-requisitos: Android Studio com suporte a Jetpack Compose. <br/>
